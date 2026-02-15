@@ -36,3 +36,27 @@
 
 ```bash
 pip install requests
+```
+
+---
+
+### Running the Tool
+
+* Clone the repository or download apsearch.py.
+* Launch the script from your terminal:
+  ```bash
+  python apsearch.py
+  ```
+* Use the numbered menu to navigate
+
+  ---
+
+### Configuration
+The tool is pre-configured to utilize the following official endpoints:
+  * Timetable API: ```https://s3-ap-southeast-1.amazonaws.com/open-ws/weektimetable```
+  * Events Feed: Google Calendar public iCal for APU Student Affairs.
+
+---
+
+### Disclaimer
+* This tool is intended for personal student use to assist in finding study spaces and managing personal schedules. It utilizes publicly available data provided for APSpace.
