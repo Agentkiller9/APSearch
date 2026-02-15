@@ -1,57 +1,38 @@
-APSearch is a Python-based "Student Intelligence Tool" designed for students at Asia Pacific University (APU). It provides real-time access to campus resource availability by syncing with live timetable data and student event calendars.
-### Key Features
-  Lecturer Tracking: Search for a lecturer by name to see if they are currently teaching, where their class is located, or when their next scheduled session begins.
+# APSearch 🔍
 
-  Empty Venue Scanner: Instantly identifies available physical rooms on campus, sorted by how long they will remain free.
+**APSearch** is a terminal-based "Student Intelligence Tool" specifically designed for Asia Pacific University (APU) students. It provides real-time visibility into campus resource availability by syncing directly with live timetable data and student event calendars.
 
-  Room Inspection: Look up specific rooms (e.g., Tech Labs, Auditoriums, or the Cyber Range) to check current occupancy and upcoming schedules.
+---
 
-  Intake Tracking: Locate specific student batches/intakes to find where their active sessions are being held.
+## 🛠 Key Features
 
-  Global Search: Perform a keyword-based discovery across all active sessions to find specific modules or topics.
+* **Lecturer Tracking:** Search for a lecturer by name to see if they are currently teaching, their physical/online location, and when their next session starts.
+* **Empty Venue Scanner:** Instantly identifies available physical rooms on campus, sorted by duration (how long they stay free).
+* **Room Inspection:** Deep-scan specific nodes like Tech Labs, Auditoriums, or the Cyber Range to check current occupancy and upcoming schedules.
+* **Intake Tracking:** Quickly locate specific student batches/intakes to find their active session locations.
+* **Global Search:** A keyword-based discovery engine to find specific modules, subjects, or keywords across all active sessions.
+* **Live Events:** Syncs with the APU Student Affairs Google Calendar to display upcoming events and public holidays.
 
-  Live Events: Syncs directly with the Student Affairs Google Calendar to display upcoming campus events and holidays.
+---
 
-### Technical Architecture
+## 🏗 Technical Architecture
 
-Data Sourcing:
+### Data Sourcing
+* **Timetable:** Fetches live JSON data from the APU S3-hosted weekly timetable API.
+* **Calendar:** Parses `.ics` (iCalendar) files from the Student Affairs public feed.
 
-  Timetable: Fetches JSON data from APU’s weekly timetable API.
+### Core Logic
+* **Time Normalization:** Handles ISO date-time parsing and localizes to **UTC+8 (Malaysia Time)**.
+* **Intelligent Parsing:** Features a regex-based cleaning engine to resolve room shorthand (e.g., converting "tl4" or "t4" into "Tech Lab 4-03").
+* **Terminal UI:** Custom-built TUI using ANSI escape codes for a "hacker-style" aesthetic and `textwrap` for dynamic table formatting.
 
-  Calendar: Parses .ics (iCalendar) files from the APU Student Affairs public calendar.
+---
 
-Core Logic:
+## 🚀 Installation & Usage
 
-  Time Normalization: Handles ISO date-time parsing and adjusts for UTC+8 (Malaysia Time).
+### Prerequisites
+* Python 3.x
+* `requests` library
 
-  Intelligent Parsing: Features a cleaning engine to resolve common shorthand for rooms (e.g., "tl4" to "Tech Lab 4-03").
-
-  Terminal UI: Utilizes ANSI escape codes for a "hacker-style" colorized interface and textwrap for clean table rendering within the console.
-
-### Installation & Usage
-Prerequisites
-
-  Python 3.x
-
-  requests library
-
-
-
-```pip install requests```
-
-Running the Tool
-
-  Clone the repository or download apsearch.py.
-
-  Run the script:
-    ```python apsearch.py```
-
-  Navigate the menu using the numbered options to scan for lecturers, rooms, or events.
-
-### Configuration
-
-The tool is pre-configured to use the following endpoints:
-
-  Timetable API: https://s3-ap-southeast-1.amazonaws.com/open-ws/weektimetable
-
-  Events ICS: Google Calendar public feed for APU Student Affairs.
+```bash
+pip install requests
